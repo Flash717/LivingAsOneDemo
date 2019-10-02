@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Living As One Demo</title>
+        <style type="text/css">
+            .container {
+                padding-top: 35px;
+                overflow: auto;
+            }
+            img {
+                max-width: 300px;
+                max-height: 250px;
+            }
+            .img-box {
+                padding: 10px;
+                height: 300px;
+                width: 350px;
+                float: left;
+                text-align: center;
+            }
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            p {
+                font-size: 80%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 style="text-align: center; margin-top:35px;">Living As One Demo</h1>
+            {% for date in pictureList %}
+            <div class="container">
+                <h2>Date: {{date.date}}</h2>
+                <div>
+                {% for p in date.pictures %}
+                    <div class="img-box">
+                        <a href="{{p.imgSrc}}">
+                            <img src="{{p.imgSrc}}" alt="{{p.imgName}}" />
+                        </a>
+                        <p>{{p.imgName}}</p>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+    </body>
+</html>

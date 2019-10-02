@@ -102,3 +102,10 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# any local images
+static/
+
+# VS Code
+.vscode/
+**/.DS_Store
