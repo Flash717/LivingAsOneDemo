@@ -26,18 +26,23 @@ The exercise we’d like to see is to use the NASA API described here to build a
 
 ## Setup:
 
-Requires python3 to be installed
 - Clone repo locally (`git clone https://github.com/Flash717/LivingAsOneDemo.git`)
-- Run `pip install -r requirements.txt` to install required python libraries
-- Run `python app.py` to start http-server on localhost port 8081
-- Run `pip install -e . && pytest` to run unit tests
-- All configuration is in file `config.py`, for this version all image files need to be stored in the subfolder `static` (Flask requirement)
+- To run locally:
+    - Requires python3 to be installed, depending on your local configuration you have to replace `python` with `python3` and `pip` with `pip3` on the calls below
+    - Run `pip install -r requirements.txt` to install required python libraries
+    - Run `python app.py` to start http-server on localhost port 8081
+    - Run `pip install -e . && pytest` to run unit tests
+- To run in Docker container:
+    - Requires Docker to be installed locally
+    - Run `docker build -t <image-name-of-your-choice> .` to build Docker image
+    - Run `docker run -d -p 8081:8081 <image-name-of-your-choice>` to run image in a container
+- All configuration is in file `config.py`, all image files need to be stored in the subfolder `static` (Flask requirement)
 ---
 ## Endpoints:
 
 - GET `/` 
     - Homepage (http://127.0.0.1:8081/)
-    - Lists all images that have been loaded via API and stored locally
+    - Lists all images that have been loaded via API and are stored locally
 - GET `/picture/<date>` 
     - Gets pictures for a specific date and stores locally
     - Returns JSON object with submitted date and list of loaded pictures

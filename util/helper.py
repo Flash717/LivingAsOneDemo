@@ -25,16 +25,18 @@ def getDatesFromFile(fileName):
 def getLocalImages(config):
     result = []
     picFolder = config.get('PICTURE_FOLDER')
-    dateFolders = os.listdir(config.get('PICTURE_FOLDER'))
-    for dateFolder in dateFolders:
-        pictureList = os.listdir(picFolder + '/' + dateFolder)
-        pictureArr = []
-        for pic in pictureList:
-            pictureArr.append(picture(pic, picFolder + '/' + dateFolder + '/' + pic))
-        result.append({
-            'date': dateFolder,
-            'pictures': pictureArr
-        })
+    if os.path.exists(picFolder):
+        dateFolders = os.listdir(picFolder)
+        if dateFolders:
+            for dateFolder in dateFolders:
+                pictureList = os.listdir(picFolder + '/' + dateFolder)
+                pictureArr = []
+                for pic in pictureList:
+                    pictureArr.append(picture(pic, picFolder + '/' + dateFolder + '/' + pic))
+                result.append({
+                    'date': dateFolder,
+                    'pictures': pictureArr
+                })
     return result
 
 def serialize(obj):

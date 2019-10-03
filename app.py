@@ -46,10 +46,10 @@ def getAcceptance():
     }, default=serialize)
 
 def initApp():
-    # some initialization
+    print('initializing app')
     app.config.from_object('config.DefaultConfig')
     app.roverService = RoverService(app.config)
 
 if __name__ == '__main__':
     initApp()
-    app.run(port=8081)
+    app.run(host='0.0.0.0', port=8081)
